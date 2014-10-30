@@ -1,25 +1,18 @@
 ﻿<Window x:Class="Concurrency.Tpl.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:Concurrency.Tpl.ViewModel"
-        Title="Resettable View Model Demo Application" Height="350" Width="329" ResizeMode="NoResize"
-        DataContext="{Binding Source={x:Static local:ViewModels.MainViewModel}}"  Background="#FF485093">
-    <Grid Margin="5" TextBlock.Foreground="White" TextBlock.FontSize="15">
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Width="90" VerticalAlignment="Center">Item Code</TextBlock>
-                <TextBox Text="{Binding ItemCode}" Width="197" Margin="8" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Width="90" VerticalAlignment="Center">Description</TextBlock>
-                <TextBox Text="{Binding Description}" Width="196" Margin="8" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Command="{Binding AddCommand}" Width="90" Margin="5">Add</Button>
-                <Button Command="{Binding ExitCommand}" Width="90" Margin="5">Exit</Button>
-            </StackPanel>
-            <ListBox ItemsSource="{Binding Entries}" Height="180" Width="293" />
-            <ProgressBar Minimum="0" Maximum="100" Value="{Binding Progress}" />
-        </StackPanel>
+        Title="MainWindow" Height="450" Width="525">
+    <Grid>
+        <Button Content="Run independent processes in parallel PARALLEL INVOKE" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click"/>
+        <ListView HorizontalAlignment="Center"  Margin="10,137,10,10" VerticalAlignment="Center" x:Name="lsMyList" Width="497" Height="273">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Run independent processes in parallel TASK.CONTINUEWITH" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click_1" />
+        <Button Content="Compare performance PLINQ - int.Maxvalue select (item * 2)" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click_2"  />
+
     </Grid>
 </Window>

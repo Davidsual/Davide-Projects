@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Concurrency.Tpl")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("TTT Moneycorp Ltd.")]
 [assembly: AssemblyProduct("Concurrency.Tpl")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright © TTT Moneycorp Ltd. 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
