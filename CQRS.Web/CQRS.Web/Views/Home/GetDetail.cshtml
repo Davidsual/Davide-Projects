@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "GetDetail";
+}
+@model CQRS.Web.Features.Home.GetDetail.GetDetailViewModel
+
+<h2>User Detail</h2>
+@using (Html.BeginForm("Save", "Home"))
+{
+    @Html.HiddenFor(c=> c.UserDetail.UserDetailId)
+    @Html.TextBoxFor(m => m.UserDetail.Firstname)
+    <br />
+    @Html.TextBoxFor(m => m.UserDetail.Lastname)
+    <br />
+
+    @Html.RadioButtonFor(e => e.UserDetail.IsActive, true, new { id = "married-true" })
+    @Html.Label("married-true", " Yes ")
+
+    @Html.RadioButtonFor(e => e.UserDetail.IsActive, false, new { id = "married-false" })
+    @Html.Label("married-false", " No ")
+    <br /> <br />
+    <input type="submit" name="Save" value="Save" />
+}
+
+

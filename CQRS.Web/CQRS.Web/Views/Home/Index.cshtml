@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model CQRS.Web.Features.Home.Index.HomeViewModel
+
+<div class="jumbotron">
+    <h1>CQRS.Web</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @{
+            var gd = new WebGrid(Model.UserDetails, canPage: true, rowsPerPage: 5, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
+            gd.Pager(WebGridPagerModes.NextPrevious);}
+
+        <div id="gridContent">
+
+            @gd.GetHtml(tableStyle: "table",
+                headerStyle: "head",
+                alternatingRowStyle: "altRow",
+                selectedRowStyle: "selectRow",
+                columns: gd.Columns(
+                gd.Column("Firstname", "Firstname"),
+                gd.Column("Lastname", " Lastname"),
+                gd.Column("IsActive", "Is Active"),
+                gd.Column("Detail", format: @<text>@Html.ActionLink("Select", "GetDetail", new { userDetailId = item.UserDetailId }) </text>)
+
+                              ))
+        </div>
+    </div>
+
+</div>
