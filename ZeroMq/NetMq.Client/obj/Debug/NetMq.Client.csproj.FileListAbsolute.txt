@@ -1,0 +1,1 @@
+C:\Users\Davide\Documents\GitHub\Davide-Projects\ZeroMq\NetMq.Client\bin\Debug\NetMq.Client.exe.config

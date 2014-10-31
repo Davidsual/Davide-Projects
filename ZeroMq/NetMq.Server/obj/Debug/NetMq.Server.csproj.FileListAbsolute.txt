@@ -1,0 +1,1 @@
+C:\Users\Davide\Documents\GitHub\Davide-Projects\ZeroMq\NetMq.Server\bin\Debug\NetMq.Server.exe.config

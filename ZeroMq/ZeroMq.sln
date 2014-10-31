@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroMq.Producer", "ZeroMq.Producer\ZeroMq.Producer.csproj", "{D6462FB1-FB07-4A70-821E-FAD8A02091E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroMq.Consumer", "ZeroMq.Consumer\ZeroMq.Consumer.csproj", "{A3DDE06E-8FB1-4684-8507-DDCEB72849DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetMq.Client", "NetMq.Client\NetMq.Client.csproj", "{23B26836-6F20-4218-ACAE-E06136A3A885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetMq.Server", "NetMq.Server\NetMq.Server.csproj", "{885AE889-D7B3-4F4F-87DC-C3D75A6B127A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6462FB1-FB07-4A70-821E-FAD8A02091E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6462FB1-FB07-4A70-821E-FAD8A02091E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6462FB1-FB07-4A70-821E-FAD8A02091E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6462FB1-FB07-4A70-821E-FAD8A02091E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3DDE06E-8FB1-4684-8507-DDCEB72849DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3DDE06E-8FB1-4684-8507-DDCEB72849DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3DDE06E-8FB1-4684-8507-DDCEB72849DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3DDE06E-8FB1-4684-8507-DDCEB72849DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B26836-6F20-4218-ACAE-E06136A3A885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B26836-6F20-4218-ACAE-E06136A3A885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B26836-6F20-4218-ACAE-E06136A3A885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B26836-6F20-4218-ACAE-E06136A3A885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885AE889-D7B3-4F4F-87DC-C3D75A6B127A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885AE889-D7B3-4F4F-87DC-C3D75A6B127A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885AE889-D7B3-4F4F-87DC-C3D75A6B127A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885AE889-D7B3-4F4F-87DC-C3D75A6B127A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
