@@ -1,0 +1,1 @@
+This is an example of separation of GET/SET for a Web ASP.NET MVC App... It useful to keep the controllers cleaned, and have a better separation, increasing testability / maintenability
