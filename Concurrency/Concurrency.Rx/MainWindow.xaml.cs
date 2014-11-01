@@ -5,7 +5,10 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mime;
+using System.Reactive.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,70 +40,21 @@ namespace Concurrency.Rx
         {
             InitializeComponent();
             _indipendentProcessesMock = indipendentProcessesMock;
-        }
+            this.lsMyList.ItemsSource = _indipendentProcessesMock.GetData();
+            var getData =
+                new Func<string, IObservable<IEnumerable<string>>>(
+                    c =>
+                        Observable.Return((c.Length >= 2) ?
+                            _indipendentProcessesMock.GetData().Where(item => item.ToLowerInvariant().Contains(c.ToLowerInvariant())).AsEnumerable() : _indipendentProcessesMock.GetData()));
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            lsMyList.ItemsSource = null;
-
-            _myResult = new ConcurrentQueue<string>();
-
-            Parallel.Invoke(
-                () => _indipendentProcessesMock.ProcessOne(_myResult),
-                    () => _indipendentProcessesMock.ProcessTwo(_myResult),
-                        () => _indipendentProcessesMock.ProcessThree(_myResult)
-                );
-
-
-            lsMyList.ItemsSource = _myResult;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            lsMyList.ItemsSource = null;
-
-            _myResult = new ConcurrentQueue<string>();
-
-            Task.Factory.StartNew(() => _indipendentProcessesMock.ProcessOne(_myResult))
-                .ContinueWith(res =>
+            var res = (from evt in Observable.FromEventPattern(this.txtSearch, "TextChanged")
+                       let text = ((TextBox)evt.Sender).Text
+                       from lstName in getData(text)
+                       select lstName).ObserveOn(SynchronizationContext.Current).Subscribe(c =>
                 {
-                    _myResult.Enqueue("TASK ONE COMPLETED");
-                    _indipendentProcessesMock.ProcessTwo(_myResult);
-                })
-                .ContinueWith(res =>
-                {
-                    _myResult.Enqueue("TASK TWO COMPLETED");
-                    _indipendentProcessesMock.ProcessThree(_myResult);
-                }).Wait();
+                    this.lsMyList.ItemsSource = c;
+                });
 
-            lsMyList.ItemsSource = _myResult;
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            lsMyList.ItemsSource = null;
-
-            _myResult = new ConcurrentQueue<string>();
-            Stopwatch stopwatch = new Stopwatch();
-
-            stopwatch.Start();
-
-            var a = Enumerable.Range(1, int.MaxValue).AsParallel().Select(c=>c * 2);
-
-            stopwatch.Stop();
-
-            _myResult.Enqueue(string.Format(" TIME FOR COMPLETE FIRST OPERATION: {0}", stopwatch.Elapsed));
-
-            stopwatch.Reset();
-            stopwatch.Start();
-
-            Enumerable.Range(1, int.MaxValue).Select(c => c * 2);
-
-            stopwatch.Stop();
-
-            _myResult.Enqueue(string.Format(" TIME FOR COMPLETE SECOND OPERATION: {0}", stopwatch.Elapsed));
-
-            lsMyList.ItemsSource = _myResult;
         }
     }
 }

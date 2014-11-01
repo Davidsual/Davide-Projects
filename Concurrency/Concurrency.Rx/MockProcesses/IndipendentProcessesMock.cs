@@ -10,27 +10,66 @@ namespace Concurrency.Rx.MockProcesses
 {
     public interface IIndipendentProcessesMock
     {
-        void ProcessOne(ConcurrentQueue<string> outPutQueue);
-        void ProcessTwo(ConcurrentQueue<string> outPutQueue);
-        void ProcessThree(ConcurrentQueue<string> outPutQueue);
+        IEnumerable<string> GetData();
     }
 
     public class IndipendentProcessesMock : IIndipendentProcessesMock
     {
-
-        public void ProcessOne(ConcurrentQueue<string> outPutQueue)
+        public IEnumerable<string> GetData()
         {
-            Enumerable.Range(0, 100).ForEach(item => outPutQueue.Enqueue(string.Format("{0} Process One item number: {1}", item, DateTime.Now.ToString("HH:mm:ss.ffffff"))));
-        }
-
-        public void ProcessTwo(ConcurrentQueue<string> outPutQueue)
-        {
-            Enumerable.Range(0, 100).ForEach(item => outPutQueue.Enqueue(string.Format("{0} Process Two item number: {1}", item, DateTime.Now.ToString("HH:mm:ss.ffffff"))));
-        }
-
-        public void ProcessThree(ConcurrentQueue<string> outPutQueue)
-        {
-            Enumerable.Range(0, 100).ForEach(item => outPutQueue.Enqueue(string.Format("{0} Process Three item number: {1}", item, DateTime.Now.ToString("HH:mm:ss.ffffff"))));
+            return new[]
+            {
+                "Lea Lincoln",
+                "Catharine Vigo",
+                "Wonda Deering",  
+                "Clemencia Woll",  
+                "Nobuko Rote",  
+                "Shanon Macek",  
+                "Dusty Valcourt",  
+                "Garnet Mcadoo",  
+                "Nikole Hentz",  
+                "Jospeh Blankinship",  
+                "Lorie Strahan",  
+                "Venetta Defoor",  
+                "Fernando Silliman",  
+                "Joshua Mckinstry",  
+                "Tena Walcott",  
+                "Donette Loud",  
+                "Lorinda Mcgonigal",  
+                "Viva Adair",  
+                "Raven Gammons",  
+                "Zelma Santo",  
+                "Dylan Demasi",  
+                "Lise Cortright",  
+                "Brian Severin",  
+                "Gladis Sprung",  
+                "Hazel Titus",  
+                "Olin Leeman",  
+                "Jack Schurg",  
+                "April Weedon",  
+                "Jamee Hieb",  
+                "Ha Salzman",  
+                "Pamella Diehl",  
+                "Mana Dials",  
+                "Etta Rinaldi",  
+                "Felisha Frame",  
+                "Jesenia Rollo",  
+                "Terrell Focht",  
+                "Georgeann Patchell",  
+                "Lourie Vermillion",  
+                "Giovanna Canizales",  
+                "Chong Geoghegan",  
+                "Domitila Olden",  
+                "Renita Smythe",  
+                "Teresa Thoman",  
+                "Foster Olszewski",  
+                "Jenifer Montoya",  
+                "Toccara Martineau",  
+                "Garrett Tibbitts",  
+                "Joye Hughley",  
+                "Malorie Otts",  
+                "Shoshana Heintzelman"  
+            };
         }
     }
 }

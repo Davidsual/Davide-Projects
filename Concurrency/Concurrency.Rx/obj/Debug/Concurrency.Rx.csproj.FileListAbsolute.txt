@@ -36,3 +36,11 @@ C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\obj\
 C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\obj\Debug\Concurrency.Rx.csproj.GenerateResource.Cache
 C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\obj\Debug\Concurrency.Rx.exe
 C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\obj\Debug\Concurrency.Rx.pdb
+C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\bin\Debug\System.Reactive.Core.dll
+C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\bin\Debug\System.Reactive.Interfaces.dll
+C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\bin\Debug\System.Reactive.Linq.dll
+C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\bin\Debug\System.Reactive.PlatformServices.dll
+C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\bin\Debug\System.Reactive.Core.xml
+C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\bin\Debug\System.Reactive.Interfaces.xml
+C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\bin\Debug\System.Reactive.Linq.xml
+C:\Users\Davide\Documents\GitHub\Davide-Projects\Concurrency\Concurrency.Rx\bin\Debug\System.Reactive.PlatformServices.xml

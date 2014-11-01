@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="450" Width="525">
     <Grid>
-        <Button Content="Run independent processes in parallel PARALLEL INVOKE" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click"/>
         <ListView HorizontalAlignment="Center"  Margin="10,137,10,10" VerticalAlignment="Center" x:Name="lsMyList" Width="497" Height="273">
             <ListView.View>
                 <GridView>
@@ -11,8 +10,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Run independent processes in parallel TASK.CONTINUEWITH" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click_1" />
-        <Button Content="Compare performance PLINQ - int.Maxvalue select (item * 2)" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="497" Click="Button_Click_2"  />
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245"/>
+        <Label Content="Type at least 3 char" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="172"/>
 
     </Grid>
 </Window>
