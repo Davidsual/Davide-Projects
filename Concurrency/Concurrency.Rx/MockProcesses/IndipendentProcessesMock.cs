@@ -10,14 +10,14 @@ namespace Concurrency.Rx.MockProcesses
 {
     public interface IIndipendentProcessesMock
     {
-        IEnumerable<string> GetData();
+        Task<IEnumerable<string>> GetData(string param);
     }
 
     public class IndipendentProcessesMock : IIndipendentProcessesMock
     {
-        public IEnumerable<string> GetData()
+        public async Task<IEnumerable<string>> GetData(string param)
         {
-            return new[]
+            var res = new[]
             {
                 "Lea Lincoln",
                 "Catharine Vigo",
@@ -70,6 +70,8 @@ namespace Concurrency.Rx.MockProcesses
                 "Malorie Otts",  
                 "Shoshana Heintzelman"  
             };
+
+            return (string.IsNullOrEmpty(param)) ? res : res.Where(c => c.ToLowerInvariant().Contains(param.ToLowerInvariant())).AsEnumerable();
         }
     }
 }

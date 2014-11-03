@@ -34,23 +34,27 @@ namespace Concurrency.Rx
     public partial class MainWindow : Window, IMainWindow
     {
         private readonly IIndipendentProcessesMock _indipendentProcessesMock;
-        private ConcurrentQueue<string> _myResult;
 
         public MainWindow(IIndipendentProcessesMock indipendentProcessesMock)
         {
             InitializeComponent();
             _indipendentProcessesMock = indipendentProcessesMock;
-            this.lsMyList.ItemsSource = _indipendentProcessesMock.GetData();
-            var getData =
-                new Func<string, IObservable<IEnumerable<string>>>(
-                    c =>
-                        Observable.Return((c.Length >= 2) ?
-                            _indipendentProcessesMock.GetData().Where(item => item.ToLowerInvariant().Contains(c.ToLowerInvariant())).AsEnumerable() : _indipendentProcessesMock.GetData()));
 
-            var res = (from evt in Observable.FromEventPattern(this.txtSearch, "TextChanged")
-                       let text = ((TextBox)evt.Sender).Text
-                       from lstName in getData(text)
-                       select lstName).ObserveOn(SynchronizationContext.Current).Subscribe(c =>
+            this.lsMyList.ItemsSource = _indipendentProcessesMock.GetData(string.Empty).Result;
+
+            var getData = new Func<string, IObservable<IEnumerable<string>>>(c => Observable.FromAsync(() => _indipendentProcessesMock.GetData(c)));
+
+            var textObservable = Observable.FromEventPattern(this.txtSearch, "TextChanged")
+                       .Select(evt => ((TextBox)evt.Sender).Text)
+                       .Where(text => text != null && text.Length >= 1)
+                       .DistinctUntilChanged();
+
+            var res = from searchValue in textObservable
+                        from dictionaryData in getData(searchValue)
+                            .TakeUntil(textObservable)
+                          select dictionaryData;
+
+            res.ObserveOn(SynchronizationContext.Current).Subscribe(c =>
                 {
                     this.lsMyList.ItemsSource = c;
                 });
