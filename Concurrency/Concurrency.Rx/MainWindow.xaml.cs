@@ -76,10 +76,10 @@ namespace Concurrency.Rx
                         .Subscribe(items =>
                         {
                             this.lsMyList.ItemsSource = items;
-                        }).Dispose();
-
+                        });
+                    
                     Observable
-                          .Timer(TimeSpan.FromSeconds(0),TimeSpan.FromSeconds(1)).Timestamp()
+                          .Timer(TimeSpan.FromSeconds(0),TimeSpan.FromSeconds(1)).Timestamp()                         
                           .ObserveOn(SynchronizationContext.Current)
                           .Subscribe(
                               x =>
@@ -90,6 +90,7 @@ namespace Concurrency.Rx
                                   // 0
                               });
                 });
+            
         }
     }
 }
