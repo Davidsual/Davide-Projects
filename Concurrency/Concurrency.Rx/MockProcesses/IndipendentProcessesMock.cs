@@ -11,6 +11,8 @@ namespace Concurrency.Rx.MockProcesses
     public interface IIndipendentProcessesMock
     {
         Task<IEnumerable<string>> GetData(string param);
+        Task<string> ProcessOne(string param);
+        Task<string> ProcessTwo(string param);
     }
 
     public class IndipendentProcessesMock : IIndipendentProcessesMock
@@ -72,6 +74,19 @@ namespace Concurrency.Rx.MockProcesses
             };
 
             return (string.IsNullOrEmpty(param)) ? res : res.Where(c => c.ToLowerInvariant().Contains(param.ToLowerInvariant())).AsEnumerable();
+        }
+
+
+        public async Task<string> ProcessOne(string param)
+        {
+            await Task.Delay(2000);
+            return param;
+        }
+
+        public async Task<string> ProcessTwo(string param)
+        {
+            await Task.Delay(7000);
+            return param;
         }
     }
 }

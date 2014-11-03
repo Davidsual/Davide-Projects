@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net.Mime;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading;
@@ -42,23 +43,53 @@ namespace Concurrency.Rx
 
             this.lsMyList.ItemsSource = _indipendentProcessesMock.GetData(string.Empty).Result;
 
-            var getData = new Func<string, IObservable<IEnumerable<string>>>(c => Observable.FromAsync(() => _indipendentProcessesMock.GetData(c)));
+            var getData =
+                new Func<string, IObservable<IEnumerable<string>>>(
+                    c => Observable.FromAsync(() => _indipendentProcessesMock.GetData(c)));
 
             var textObservable = Observable.FromEventPattern(this.txtSearch, "TextChanged")
-                       .Select(evt => ((TextBox)evt.Sender).Text)
-                       .Where(text => text != null && text.Length >= 1)
-                       .DistinctUntilChanged();
+                .Select(evt => ((TextBox)evt.Sender).Text)
+                .Where(text => text != null && text.Length >= 1)
+                .DistinctUntilChanged();
 
             var res = from searchValue in textObservable
-                        from dictionaryData in getData(searchValue)
-                            .TakeUntil(textObservable)
-                          select dictionaryData;
+                      from dictionaryData in getData(searchValue)
+                          .TakeUntil(textObservable)
+                      select dictionaryData;
 
             res.ObserveOn(SynchronizationContext.Current).Subscribe(c =>
-                {
-                    this.lsMyList.ItemsSource = c;
-                });
+            {
+                this.lsMyList.ItemsSource = c;
+            });
 
+
+
+            var myObserver =
+                Observable.FromEventPattern(this.btnConsume, "Click").ObserveOn(SynchronizationContext.Current).Subscribe(c =>
+                {
+                    
+                    Observable.FromAsync(() => _indipendentProcessesMock.ProcessOne("I am process One and I took 2 seconds for completing"))
+                        .ObserveOn(Scheduler.ThreadPool)
+                        .Zip(Observable.FromAsync(() => _indipendentProcessesMock.ProcessTwo("I am process Two and I took 7 seconds for completing")),
+                            (left, right) => new [] { left, right })
+                        .ObserveOn(SynchronizationContext.Current)
+                        .Subscribe(items =>
+                        {
+                            this.lsMyList.ItemsSource = items;
+                        }).Dispose();
+
+                    Observable
+                          .Timer(TimeSpan.FromSeconds(0),TimeSpan.FromSeconds(1)).Timestamp()
+                          .ObserveOn(SynchronizationContext.Current)
+                          .Subscribe(
+                              x =>
+                              {
+                                  // Do Stuff Here
+                                  this.lblTimer.Content = string.Format("{0}: {1}", x.Value, x.Timestamp.TimeOfDay);
+                                  // Console WriteLine Prints
+                                  // 0
+                              });
+                });
         }
     }
 }
