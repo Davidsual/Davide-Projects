@@ -1,9 +1,9 @@
 ﻿<Window x:Class="Concurrency.Rx.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="450" Width="525">
+        Title="MainWindow" Height="573" Width="525">
     <Grid>
-        <ListView HorizontalAlignment="Center"  Margin="10,137,10,10" VerticalAlignment="Center" x:Name="lsMyList" Width="497" Height="273">
+        <ListView HorizontalAlignment="Center"  Margin="0,259,10,10" VerticalAlignment="Center" x:Name="lsMyList" Width="507" Height="273">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -12,8 +12,15 @@
         </ListView>
         <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245"/>
         <Label Content="Type at least 3 char" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="172"/>
-        <Button x:Name="btnConsume" Content="Consume two async methods and wait for result" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="497"/>
-        <Label Content="- - -" HorizontalAlignment="Left" Height="26" Margin="10,87,0,0" VerticalAlignment="Top" Width="126" x:Name="lblTimer"/>
+        <Button x:Name="btnConsume" Content="RX Consume two async methods and wait for result" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="291"/>
+        <Label Content="- - -" HorizontalAlignment="Left" Height="26" Margin="306,41,0,0" VerticalAlignment="Top" Width="201" x:Name="lblTimer"/>
+        <Button Content="RX Asynchronous Background Operations" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="291" Click="Button_Click"/>
+        <Button Content="RX Asynchronous Background Operations 2" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Width="291" Click="Button_Click_1" />
+        <Button Content="RX Asynchronous Background Operations 3" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="291" Click="Button_Click_2"  />
+        <Label Content="" HorizontalAlignment="Left" Height="26" Margin="10,147,0,0" VerticalAlignment="Top" Width="201" x:Name="lblMousePosition" />
+        <Button Content="RX Start Timer" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="132" Click="Button_Click_3"   />
+        <Label Content="" HorizontalAlignment="Left" Height="26" Margin="147,172,0,0" VerticalAlignment="Top" Width="163" x:Name="lblTime" />
+        <Button Content="RX Dispose Subscribe" HorizontalAlignment="Left" Margin="324,178,0,0" VerticalAlignment="Top" Width="132" x:Name="btnDisposeTimer"   />
 
     </Grid>
 </Window>
