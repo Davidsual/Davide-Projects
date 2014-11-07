@@ -1,0 +1,12 @@
+Testing RX for common every-day scenario.
+
+Test RX and UI
+RX and Services
+RX and async method..
+
+Dispose, concat, zip, merge.
+Difference between Hot/Cold observable.
+
+Everything with tips and hints from a real expert that applied RX in a real extremely complex scenario, 
+my colleague Sacha Barber.
+
